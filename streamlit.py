@@ -153,6 +153,7 @@ def main():
             model.load_state_dict(state_dict)
             model.eval() 
             pred_img = predict_unet(model,image)
-            st.image(pred_img, channels = "BGR")
+            resized_img = cv2.resize(pred_img, ((image.shape[1]), image.shape[0]))
+            st.image(resized_img, channels = "BGR")
 if __name__ == "__main__":
     main()
